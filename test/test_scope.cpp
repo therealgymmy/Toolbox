@@ -1,6 +1,8 @@
 #include "../src/scope.h"
 
 #include <iostream>
+#include <vector>
+#include <map>
 
 using namespace std;
 
@@ -10,6 +12,26 @@ class Object {
 
 void foo_exit() {
     cout << "----foo_exit----" << endl;
+
+    {
+        vector<int*> stuff;
+        auto testguard = makeScopeGuardContainer(stuff);
+    }
+
+    {
+        map<int*, int*> stuff2;
+        auto testguard2 = makeScopeGuardContainer(stuff2);
+    }
+
+    {
+        map<int*, int> stuff3;
+        auto testguard3 = makeScopeGuardContainer(stuff3);
+    }
+
+    {
+        map<int, int*> stuff3;
+        auto testguard3 = makeScopeGuardContainer(stuff3);
+    }
 
     scope(exit, {
         cout << "exit" << endl;
