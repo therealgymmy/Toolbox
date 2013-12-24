@@ -1,8 +1,8 @@
 How to use
-----------
+==========
 
 Macro: `scope`
-==============
+--------------
     
     Syntax:
     
@@ -33,7 +33,7 @@ Macro: `scope`
     
     
 Macro: `release_container`
-==========================
+--------------------------
     
     Syntax:
     
@@ -41,7 +41,7 @@ Macro: `release_container`
 
     
 Macro: `release_container_with_deleter`
-=======================================
+---------------------------------------
     
     Syntax:
     
