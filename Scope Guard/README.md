@@ -25,7 +25,7 @@ A Simple Example
 Another Example
 ---------------
 
-    void rollback(vector<data*>&);
+    void rollback(vector<data*>&) noexcept;
     void doStuffAndMayThrow(vector<data*>&, map<int, set<account*>>&);
     void moveToClient(map<int, set<account*>>&);
 
