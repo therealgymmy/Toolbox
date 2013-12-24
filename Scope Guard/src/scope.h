@@ -52,8 +52,10 @@
 //   release_container(container_name);
 //
 #define release_container(container) \
-    auto AUTOGEN_NAME(scopeguard_container__##container) = \
-        makeScopeGuardContainer(container)
+    do {\
+        auto AUTOGEN_NAME(scopeguard_container__##container) = \
+            makeScopeGuardContainer(container); \
+    } while (0)
 
 //
 // Macro: `release_container_with_deleter`
@@ -78,8 +80,10 @@
 //   });
 //
 #define release_container_with_deleter(container, iterator, code) \
+    do { \
         auto AUTOGEN_NAME(scopeguard_container_custom__##container) = \
-            makeScopeGuardContainerCustom(container, [](decltype(container.cbegin()) iterator) code)
+            makeScopeGuardContainerCustom(container, [](decltype(container.cbegin()) iterator) code); \
+    } while (0)
 
 enum class ScopeGuardType {
     exit, success, failure
