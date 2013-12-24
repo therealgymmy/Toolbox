@@ -27,7 +27,7 @@ Another Example
 
     void rollback(vector<data*>&) noexcept;
     void doStuffAndMayThrow(vector<data*>&, map<int, set<account*>>&);
-    void moveToClient(map<int, set<account*>>&);
+    void moveToClient(map<int, set<account*>>&) noexcept;
 
     void foo2() {
         vector<data*> dataCache;
