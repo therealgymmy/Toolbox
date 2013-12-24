@@ -22,6 +22,38 @@ A Simple Example
     }
     // resources released properly at this point
 
+Another Example
+---------------
+
+    void rollback(vector<data*>&);
+    void doStuffAndMayThrow(vector<data*>&, map<int, set<account*>>&);
+    void moveToClient(map<int, set<account*>>&);
+
+    void foo2() {
+        vector<data*> dataCache;
+        map<int, set<account*>> uniqueAccountMap;
+
+        // on failure, clean up the uniqueAccountMap and rollback dataCache
+        scope(failure, {
+            release_container_with_deleter(uniqueAccountMap, itr, {
+                set<account*> &temp = itr->second;
+                for (auto itr2 : temp) delete *itr;
+            });
+            rollback(dataCache);
+        });
+
+        // clean up dataCache, regardless of failure or success
+        scope(exit, {
+            release_container(dataCache);
+        });
+
+        // now, do some stuff!
+
+        doStuffAndMayThrow(dataCache, uniqueAccountMap);
+
+        moveToClient(uniqueAccountMap);
+    }
+
 Macro: `scope`
 --------------
     
@@ -67,7 +99,7 @@ Macro: `release_container_with_deleter`
 ###Syntax:
     
     release_container_with_deleter(container_name, iterator_name {
-    // custom clean up code
+        // custom clean up code
     });
   
     container_name: name of your container variable
@@ -76,7 +108,6 @@ Macro: `release_container_with_deleter`
 ###Example:
   
     map<int*, pair<int*, object*>> map_container;
-    // ... allocate stuff
     release_container_with_deleter(map_container, itr, {
         delete itr->first;
         delete itr->second.first;
