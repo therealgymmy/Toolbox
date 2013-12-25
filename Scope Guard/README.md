@@ -98,7 +98,7 @@ Macro: `release_container_with_deleter`
     
 ###Syntax:
     
-    release_container_with_deleter(container_name, iterator_name {
+    release_container_with_deleter(container_name, iterator_name, {
         // custom clean up code
     });
   
