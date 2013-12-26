@@ -10,7 +10,7 @@ Coroutine
 Introduction
 ------------
 
-A header-only library for coroutines!
+A portable (sorta) library for coroutines!
 
 The plan is to have both a barebone C89 library and
 a C++11 wrapper on top for advanced features.
