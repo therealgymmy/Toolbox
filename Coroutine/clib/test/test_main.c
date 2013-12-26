@@ -24,6 +24,8 @@ int main() {
 
     g_cor = cor_init(&stuff);
 
+    printf("initialized\n");
+
     param.stack_size = 0;
     param.data = &stuff;
 
@@ -38,6 +40,7 @@ int main() {
     printf("main: %d\n", i);
 
     cor_del(cor_foo);
+    cor_del(g_cor);
 
     printf("main: %d\n", i);
 

@@ -31,10 +31,13 @@ typedef struct corparam {
  * data structure for coroutine
  *
  * fields:
- * handler -> [OUT] handler to coroutine
+ * handler   -> [OUT] handler to coroutine
+ * arch_data -> [OUT] pointer to platform specific data structure
+ *                    may be NULL for some platforms
  */
 typedef struct cordata {
     void_ptr handler;
+    void_ptr arch_data;
 } cordata, *cordata_ptr;
 
 /*
