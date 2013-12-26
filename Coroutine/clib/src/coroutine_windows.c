@@ -17,7 +17,8 @@ cordata_ptr cor_init(void_ptr data) {
         return NULL;
     }
 
-    cor->handler = ConvertThreadToFiber(data);
+    cor->handler   = ConvertThreadToFiber(data);
+    cor->arch_data = NULL;
 
     return cor;
 }
@@ -37,7 +38,8 @@ cordata_ptr cor_new(entry_fn fn, corparam_ptr param) {
         data       = param->data;
     }
 
-    cor->handler = CreateFiber(stack_size, (fiber_entry_fn)fn, data);
+    cor->handler   = CreateFiber(stack_size, (fiber_entry_fn)fn, data);
+    cor->arch_data = NULL;
 
     return cor;
 }

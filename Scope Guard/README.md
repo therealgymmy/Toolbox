@@ -1,5 +1,21 @@
-How to Use
-==========
+Scope Guard
+===========
+
+####Status
+
+* `release_container_with_deleter` works with all container types.
+* `release_container` now supports `map`, `set`, and `vector`
+* `scope` cannot be used in destructor due to undefined behavior (plan to fix this later)
+
+Introduction
+------------
+
+A header-only library to ease resource management!
+
+D-style scope control is supported, as well as container scope guards.
+
+To use this library, simply copy the header files into your project
+and put `#include "scope.h"` in the desired file.
 
 A Simple Example
 ----------------
